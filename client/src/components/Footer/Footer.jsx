@@ -6,20 +6,23 @@ const Footer = () => {
       <div className="paddings innerWidth flexCenter f-container">
         {/* left side */}
         <div className="flexColStart f-left">
-          <img src="./logo2.png" alt="" width={120} />
+          <div style={{ display: 'flex', alignItems: 'center', fontSize: '28px', fontWeight: 'bold', color: '#1f3e72', marginBottom: '1rem' }}>
+            🏠 PropertyPro
+          </div>
           <span className="secondaryText">
-            Our vision is to make all people <br />
-            the best place to live for them.
+            Your trusted partner for premium <br />
+            real estate solutions in Mumbai.
           </span>
         </div>
 
         <div className="flexColStart f-right">
-          <span className="primaryText">Information</span>
-          <span className="secondaryText">145 New York, FL 5467, USA</span>
+          <span className="primaryText">Contact Information</span>
+          <span className="secondaryText">Office 301, Andheri West, Mumbai 400058, Maharashtra, India</span>
+          <span className="secondaryText">Phone: +91 98765 43210 | Email: contact@propertypro.com</span>
           <div className="flexCenter f-menu">
-            <span>Property</span>
+            <span>Properties</span>
             <span>Services</span>
-            <span>Product</span>
+            <span>Investment</span>
             <span>About Us</span>
           </div>
         </div>

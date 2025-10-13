@@ -19,13 +19,13 @@ const Hero = () => {
             }}
             >
               Discover <br />
-              Most Suitable
-              <br /> Property
+              Premium Properties
+              <br /> in Mumbai
             </motion.h1>
           </div>
           <div className="flexColStart secondaryText flexhero-des">
-            <span>Find a variety of properties that suit you very easilty</span>
-            <span>Forget all difficulties in finding a residence for you</span>
+            <span>Find premium residential and commercial properties in Mumbai's prime locations</span>
+            <span>Your trusted partner for real estate investments in India's financial capital</span>
           </div>
 
           <SearchBar/>
@@ -33,23 +33,23 @@ const Hero = () => {
           <div className="flexCenter stats">
             <div className="flexColCenter stat">
               <span>
-                <CountUp start={8800} end={9000} duration={4} /> <span>+</span>
+                <CountUp start={1200} end={1500} duration={4} /> <span>+</span>
               </span>
-              <span className="secondaryText">Premium Product</span>
+              <span className="secondaryText">Premium Properties</span>
             </div>
 
             <div className="flexColCenter stat">
               <span>
-                <CountUp start={1950} end={2000} duration={4} /> <span>+</span>
+                <CountUp start={950} end={1200} duration={4} /> <span>+</span>
               </span>
-              <span className="secondaryText">Happy Customer</span>
+              <span className="secondaryText">Happy Families</span>
             </div>
 
             <div className="flexColCenter stat">
               <span>
-                <CountUp end={28} /> <span>+</span>
+                <CountUp end={15} /> <span>+</span>
               </span>
-              <span className="secondaryText">Awards Winning</span>
+              <span className="secondaryText">Years Experience</span>
             </div>
           </div>
         </div>

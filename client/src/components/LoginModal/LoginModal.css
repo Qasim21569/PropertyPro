@@ -1,0 +1,153 @@
+.login-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.login-modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 0;
+  max-width: 400px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.login-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #eee;
+}
+
+.login-modal-header h2 {
+  margin: 0;
+  color: #1f3e72;
+  font-size: 24px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button:hover {
+  color: #333;
+}
+
+.login-modal-body {
+  padding: 24px;
+  text-align: center;
+  position: relative;
+}
+
+.login-modal-body p {
+  margin-bottom: 24px;
+  color: #666;
+  font-size: 16px;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 16px;
+}
+
+.login-button.primary {
+  background: #1f3e72;
+  color: white;
+}
+
+.login-button.primary:hover {
+  background: #2d4a7f;
+}
+
+.login-divider {
+  margin: 20px 0;
+  position: relative;
+  color: #999;
+}
+
+.login-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #eee;
+}
+
+.login-divider span {
+  background: white;
+  padding: 0 16px;
+  position: relative;
+}
+
+.guest-button {
+  width: 100%;
+  padding: 12px 24px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background: white;
+  color: #666;
+  transition: all 0.2s ease;
+}
+
+.guest-button:hover {
+  border-color: #1f3e72;
+  color: #1f3e72;
+}
+
+/* Subtle developer access button */
+.dev-access {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  color: #ddd;
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dev-access:hover {
+  opacity: 0.8;
+  color: #1f3e72;
+}
