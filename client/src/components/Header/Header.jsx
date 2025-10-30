@@ -1,6 +1,7 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 import AuthModal from "../AuthModal/AuthModal";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -23,6 +24,7 @@ const Header = () => {
   const [authModalOpened, setAuthModalOpened] = useState(false);
   const { currentUser, userProfile, logout } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
   const profileMenuRef = useRef(null);
 
   // Close profile menu when clicking outside
@@ -139,19 +141,19 @@ const Header = () => {
               ))}
               
               {!currentUser && (
-                <NavLink
-                  to="/properties"
-                  className={({ isActive }) => `
-                    flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200
-                    ${isActive 
-                      ? 'bg-primary-50 text-primary-700 border border-primary-200'
-                      : 'text-neutral-700 hover:text-primary-600 hover:bg-neutral-50'
-                    }
-                  `}
+                <button
+                  onClick={() => {
+                    toast.info("Sign in to explore properties and access all features!", {
+                      position: "top-center",
+                      autoClose: 4000,
+                    });
+                    navigate("/?login=1");
+                  }}
+                  className="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-neutral-700 hover:text-primary-600 hover:bg-neutral-50"
                 >
                   <HomeIcon className="w-4 h-4" />
                   <span>Browse Properties</span>
-                </NavLink>
+                </button>
               )}
             </nav>
 
@@ -306,14 +308,20 @@ const Header = () => {
                   </>
                 ) : (
                   <>
-                    <NavLink
-                      to="/properties"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center space-x-3 p-3 text-neutral-700 hover:bg-neutral-50 rounded-lg transition-colors duration-200"
+                    <button
+                      onClick={() => {
+                        toast.info("Sign in to explore properties and access all features!", {
+                          position: "top-center",
+                          autoClose: 4000,
+                        });
+                        setMobileMenuOpen(false);
+                        navigate("/?login=1");
+                      }}
+                      className="w-full flex items-center space-x-3 p-3 text-neutral-700 hover:bg-neutral-50 rounded-lg transition-colors duration-200"
                     >
                       <HomeIcon className="w-5 h-5" />
                       <span className="font-medium">Browse Properties</span>
-                    </NavLink>
+                    </button>
                     
                     <button
                       onClick={() => {

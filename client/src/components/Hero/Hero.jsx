@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Hero = () => {
   const { currentUser, userProfile } = useAuth();
@@ -13,7 +14,25 @@ const Hero = () => {
       const dashboard = userProfile?.role === "owner" ? "/dashboard/owner" : "/dashboard/user";
       navigate(dashboard);
     } else {
+      // Show sign-in prompt for unauthenticated users
+      toast.info("Please sign in to explore properties and access all features!", {
+        position: "top-center",
+        autoClose: 4000,
+      });
+      navigate("/?login=1");
+    }
+  };
+
+  const handleViewListingsClick = () => {
+    if (currentUser) {
       navigate("/properties");
+    } else {
+      // Show sign-in prompt for unauthenticated users
+      toast.info("Sign in to view all property listings and book visits!", {
+        position: "top-center",
+        autoClose: 4000,
+      });
+      navigate("/?login=1");
     }
   };
 
@@ -71,7 +90,7 @@ const Hero = () => {
               </button>
               
               <button
-                onClick={() => navigate("/properties")}
+                onClick={handleViewListingsClick}
                 className="btn-outline text-lg px-8 py-4 rounded-xl hover:shadow-lg transition-all duration-200"
               >
                 View All Listings

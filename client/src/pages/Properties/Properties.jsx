@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import useProperties from "../../hooks/useProperties";
 import PropertyCard from "../../components/PropertyCard/PropertyCard";
 import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   MagnifyingGlassIcon,
   FunnelIcon,
@@ -14,6 +16,7 @@ import {
 const Properties = () => {
   const { data, isError, isLoading } = useProperties();
   const { currentUser, userProfile } = useAuth();
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("newest");
   const [priceRange, setPriceRange] = useState("");
@@ -58,6 +61,82 @@ const Properties = () => {
 
     return filtered;
   }, [data, searchTerm, sortBy, priceRange, propertyType]);
+
+  // Show sign-in prompt for unauthenticated users
+  if (!currentUser) {
+    return (
+      <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
+        <div className="max-w-md mx-auto text-center p-8">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-6"
+          >
+            {/* Icon */}
+            <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto shadow-lg">
+              <span className="text-3xl text-white">🏠</span>
+            </div>
+            
+            {/* Title */}
+            <div className="space-y-2">
+              <h2 className="text-2xl font-bold text-neutral-900">
+                Sign In to Explore Properties
+              </h2>
+              <p className="text-neutral-600 leading-relaxed">
+                Access thousands of premium properties, book visits, and find your dream home. 
+                Join PropertyPro to unlock all features!
+              </p>
+            </div>
+
+            {/* Features */}
+            <div className="grid grid-cols-1 gap-3 text-sm text-neutral-600">
+              <div className="flex items-center justify-center space-x-2">
+                <span className="w-2 h-2 bg-primary-500 rounded-full"></span>
+                <span>Browse premium properties</span>
+              </div>
+              <div className="flex items-center justify-center space-x-2">
+                <span className="w-2 h-2 bg-secondary-500 rounded-full"></span>
+                <span>Book property visits</span>
+              </div>
+              <div className="flex items-center justify-center space-x-2">
+                <span className="w-2 h-2 bg-accent-500 rounded-full"></span>
+                <span>Save favorites & manage bookings</span>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="space-y-3 pt-4">
+              <button
+                onClick={() => {
+                  toast.info("Redirecting to sign in...", {
+                    position: "top-center",
+                    autoClose: 2000,
+                  });
+                  navigate("/?login=1");
+                }}
+                className="w-full btn-primary py-3 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+              >
+                Sign In to Continue
+              </button>
+              
+              <button
+                onClick={() => navigate("/")}
+                className="w-full btn-outline py-3 text-lg font-semibold rounded-xl transition-all duration-200"
+              >
+                Back to Home
+              </button>
+            </div>
+
+            {/* Additional Info */}
+            <p className="text-xs text-neutral-500 pt-4">
+              New to PropertyPro? Sign up is quick and free!
+            </p>
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
 
   if (isError) {
     return (
