@@ -1,17 +1,17 @@
 import React, { useContext, useEffect, useRef } from "react";
 import UserDetailContext from "../context/UserDetailContext";
 import { useQuery } from "react-query";
-import { useAuth0 } from "@auth0/auth0-react";
-import { getAllBookings, getAllFav } from "../utils/api";
+import { useAuth } from "../context/AuthContext";
+import { getUserBookings, getUserFavorites } from "../utils/directFirebase";
 
 const useBookings = () => {
   const { userDetails, setUserDetails } = useContext(UserDetailContext);
   const queryRef = useRef();
-  const { user } = useAuth0();
+  const { currentUser: user } = useAuth();
 
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: "allBookings",
-    queryFn: () => getAllBookings(user?.email, userDetails?.token),
+    queryFn: () => getUserBookings(),
     onSuccess: (data) =>
       setUserDetails((prev) => ({ ...prev, bookings: data })),
     enabled: user !== undefined,

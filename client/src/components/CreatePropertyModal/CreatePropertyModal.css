@@ -1,0 +1,36 @@
+.create-property-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.create-property-form .mantine-Grid-root {
+  margin: 0;
+}
+
+.create-property-form .mantine-TextInput-root,
+.create-property-form .mantine-Textarea-root,
+.create-property-form .mantine-NumberInput-root,
+.create-property-form .mantine-Select-root {
+  margin-bottom: 0.5rem;
+}
+
+.facilities-section {
+  border-top: 1px solid #e9ecef;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.facility-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.form-actions {
+  border-top: 1px solid #e9ecef;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+

@@ -1,7 +1,8 @@
 import countries from "world-countries";
 
 const formattedCountries = countries.map((country)=> ({
-    value: country.name.common,
+    name: country.name.common,
+    value: country.cca2,
     label: `${country.name.common} ${country.flag}`,
     latlng: country.latlng,
     region: country.region
@@ -12,4 +13,5 @@ const useCountries = ()=> {
     return {getAll}
 }
 
-export default useCountries
+export default useCountries;
+export { useCountries };

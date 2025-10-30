@@ -1,12 +1,12 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { getAllProperties } from "../utils/api";
+import { getPropertiesDirect } from "../utils/directFirebase";
 
 const useProperties = () => {
   const { data, isLoading, isError, refetch } = useQuery(
     "allProperties",
-    getAllProperties,
-    { refetchOnWindowFocus: false }
+    getPropertiesDirect,
+    { refetchOnWindowFocus: false, retry: 0 }
   );
 
   return {

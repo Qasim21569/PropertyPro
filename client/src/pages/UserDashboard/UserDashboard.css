@@ -1,0 +1,30 @@
+.user-dashboard {
+  min-height: 80vh;
+  padding: 2rem 0;
+}
+
+.dashboard-card {
+  transition: transform 0.2s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-2px);
+}
+
+.booking-status {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.booking-status.pending {
+  color: #fd7e14;
+}
+
+.booking-status.confirmed {
+  color: #51cf66;
+}
+
+.booking-status.cancelled {
+  color: #ff6b6b;
+}
+

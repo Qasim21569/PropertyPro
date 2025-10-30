@@ -2,43 +2,34 @@ import React, { useContext, useEffect } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { Outlet } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth } from "../../context/AuthContext";
 import UserDetailContext from "../../context/UserDetailContext";
-import { useMutation } from "react-query";
-import { createUser } from "../../utils/api";
+import { createUserProfileDirect } from "../../utils/directFirebase";
 import useFavourites from "../../hooks/useFavourites";
 import useBookings from "../../hooks/useBookings";
 
 const Layout = () => {
+  useFavourites();
+  useBookings();
 
-  useFavourites()
-  useBookings()
-
-  const { isAuthenticated, user, getAccessTokenWithPopup } = useAuth0();
+  const { currentUser: user } = useAuth();
   const { setUserDetails } = useContext(UserDetailContext);
 
-  const { mutate } = useMutation({
-    mutationKey: [user?.email],
-    mutationFn: (token) => createUser(user?.email, token),
-  });
-
   useEffect(() => {
-    const getTokenAndRegsiter = async () => {
-
-      const res = await getAccessTokenWithPopup({
-        authorizationParams: {
-          audience: "http://localhost:8000",
-          scope: "openid profile email",
-        },
+    if (user) {
+      // Set user details for the app (don't override the role)
+      setUserDetails({
+        favourites: [],
+        bookings: [],
+        token: user.uid, // Use Firebase UID as token
+        user: {
+          name: user.displayName || user.email,
+          email: user.email,
+          picture: user.photoURL || "https://via.placeholder.com/40"
+        }
       });
-      localStorage.setItem("access_token", res);
-      setUserDetails((prev) => ({ ...prev, token: res }));
-      mutate(res)
-    };
-
-
-    isAuthenticated && getTokenAndRegsiter();
-  }, [isAuthenticated]);
+    }
+  }, [user, setUserDetails]);
 
   return (
     <>

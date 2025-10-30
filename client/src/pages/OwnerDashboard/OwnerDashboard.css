@@ -1,0 +1,57 @@
+.owner-dashboard {
+  min-height: 80vh;
+  padding: 2rem 0;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.property-card {
+  transition: transform 0.2s ease;
+}
+
+.property-card:hover {
+  transform: translateY(-2px);
+}
+
+.booking-card {
+  border-left: 4px solid #228be6;
+}
+
+.property-image {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.property-stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.stat-number {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #228be6;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+

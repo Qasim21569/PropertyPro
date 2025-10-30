@@ -53,3 +53,6 @@ const LoginModal = ({ opened, setOpened, onLogin, onDemoAccess }) => {
 };
 
 export default LoginModal;
+
+
+

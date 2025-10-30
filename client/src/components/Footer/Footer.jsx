@@ -11,13 +11,13 @@ const Footer = () => {
           </div>
           <span className="secondaryText">
             Your trusted partner for premium <br />
-            real estate solutions in Mumbai.
+            real estate solutions across India.
           </span>
         </div>
 
         <div className="flexColStart f-right">
           <span className="primaryText">Contact Information</span>
-          <span className="secondaryText">Office 301, Andheri West, Mumbai 400058, Maharashtra, India</span>
+          <span className="secondaryText">Nationwide offices across India</span>
           <span className="secondaryText">Phone: +91 98765 43210 | Email: contact@propertypro.com</span>
           <div className="flexCenter f-menu">
             <span>Properties</span>
